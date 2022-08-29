@@ -36,7 +36,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        echo "ya llegue tengo asistencia Joel Juan Pablo Gramajo Chan";
+        //echo "ya llegue tengo asistencia Joel Juan Pablo Gramajo Chan";
+
+        $request->validate([
+            'title'=> 'required|min:5|Max:500',
+            'slug'=> 'required|min:5|Max:500',
+            'content'=> 'required|min:5'
+        ]);
+
+        echo"El titulo es: ".$request->title;
+
+        //dd($request);
     }
 
     /**
