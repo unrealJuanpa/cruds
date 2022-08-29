@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostPost;
 
 class PostController extends Controller
 {
@@ -34,19 +35,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostPost $request)
     {
         //echo "ya llegue tengo asistencia Joel Juan Pablo Gramajo Chan";
-
+        /*
         $request->validate([
             'title'=> 'required|min:5|Max:500',
             'slug'=> 'required|min:5|Max:500',
             'content'=> 'required|min:5'
         ]);
+        */
 
+        //dd($request->validated());
         echo"El titulo es: ".$request->title;
-
-        //dd($request);
+        Post::create($request->validated());
     }
 
     /**
