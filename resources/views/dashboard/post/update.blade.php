@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primer Crud</title>
+    <title>Update Post</title>
 
     <style>
         html {
@@ -275,26 +275,10 @@
 </head>
 <body>
     <div class="login-box">
-        <h2>Ingreso de post</h2>
-
-        @if ($errors->any())
-            @foreach ($errors->all as $error)
-                <div class="alert alert-danger" role="alert">
-                    {{$error}}
-                </div>
-            @endforeach
-        @endif
-
+        <h2>Update de post</h2>
 
         <form action="{{route('post.store')}}" method="post">
             @csrf
-
-
-            @if(session('status'))
-                <div style="color:green; ">
-                    {{session('status')}}
-                </div>
-            @endif
             
             <div class="user-box">
                 <input type="text" name="title">
