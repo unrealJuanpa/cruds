@@ -37,20 +37,9 @@ class PostController extends Controller
      */
     public function store(StorePostPost $request)
     {
-        //echo "ya llegue tengo asistencia Joel Juan Pablo Gramajo Chan";
-        /*
-        $request->validate([
-            'title'=> 'required|min:5|Max:500',
-            'slug'=> 'required|min:5|Max:500',
-            'content'=> 'required|min:5'
-        ]);
-        */
-
-        //dd($request->validated());
         echo"El titulo es: ".$request->title;
         Post::create($request->validated());
         return back()->with('status', 'Post created');
-        //return redirect('dashboard.post.create')->width('status', 'Post created');
     }
 
     /**

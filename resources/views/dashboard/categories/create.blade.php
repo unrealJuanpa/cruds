@@ -277,7 +277,7 @@
     <div class="login-box">
         <h2>Ingreso de categoria</h2>
 
-        <form action="{{route('post.store')}}" method="post">
+        <form action="{{route('categories.store')}}" method="post">
             @csrf
 
 

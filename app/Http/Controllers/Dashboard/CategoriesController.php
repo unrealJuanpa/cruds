@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoriesCategories;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        echo("Joel Juan Pablo Gramajo Chan");
     }
 
     /**
@@ -34,9 +35,11 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoriesCategories $request)
     {
-        //
+        echo"El titulo es: ".$request->title;
+        Categories::create($request->validated());
+        return back()->with('status', 'Category created');
     }
 
     /**
