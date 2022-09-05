@@ -16,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        echo("Joel Juan Pablo Gramajo Chan");
+        $categories=Categories::orderBy('created_at', 'desc')->cursorpaginate(5);
+        echo view('dashboard.categories.index', ['categories'=>$categories]);
     }
 
     /**

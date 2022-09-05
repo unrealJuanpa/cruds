@@ -15,8 +15,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        echo("Joel Juan Pablo Gramajo Chan");
+    { //$posts=Post::get();
+        $posts=Post::orderBy('created_at', 'desc')->cursorpaginate(5);
+        echo view('dashboard.post.index', ['posts'=>$posts]);
     }
 
     /**

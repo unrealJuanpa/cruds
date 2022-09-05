@@ -7,6 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Primer Crud</title>
 
+    <link rel="stylesheet" href="{{asset("css/>app.css")}}">
+
+    <script src="{{asset("js/>app.js")}}"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<!--
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+ hasta aqui--> 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+
     <style>
         html {
         height: 100%;
@@ -274,6 +290,8 @@
     </style>
 </head>
 <body>
+    @include('dashboard.partials.nav-header-main')
+
     <div class="login-box">
         <h2>Ingreso de post</h2>
 
@@ -287,7 +305,7 @@
 
 
         <form action="{{route('post.store')}}" method="post">
-            @csrf
+            @include('dashboard.partials.sesion-flash-status')
 
 
             @if(session('status'))
@@ -358,9 +376,11 @@
         </form>
     </div>
 
+    <!--
     <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
     <script src="/docs/5.2/assets/js/docs.min.js"></script>
+    -->
 </body>
 </html>
