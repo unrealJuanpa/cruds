@@ -282,7 +282,7 @@
 
 
             @if(session('status'))
-                <div style="color:green; ">
+                <div style="color:green; margin-bottom:30px;">
                     {{session('status')}}
                 </div>
             @endif
