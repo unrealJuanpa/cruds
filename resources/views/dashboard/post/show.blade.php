@@ -335,7 +335,9 @@
             </div>
 
             <div class="user-box">
-                <textarea name="content">{{old('content')}}</textarea>
+                <textarea name="content">
+                    {{old('content')}}
+                </textarea>
                 <label for="">Contenido</label>                
                 @error('content')
                     <div style="color:red; margin-bottom:30px;">    
@@ -345,7 +347,9 @@
             </div>
 
             <div class="user-box">
-                <textarea name="description" value="{{old('description')}}">{{old('description')}}</textarea>
+                <textarea name="description" value="{{old('description')}}">
+                    {{old('description')}}
+                </textarea>
                 <label for="">Descripción</label>
                 @error('description')
                     <div style="color:red; margin-bottom:30px;">    

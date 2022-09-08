@@ -274,11 +274,13 @@
     </style>
 </head>
 <body>
+@include('dashboard.partials.nav-header-main')
+
     <div class="login-box">
         <h2>Ingreso de categoria</h2>
 
         <form action="{{route('categories.store')}}" method="post">
-            @csrf
+            @include('dashboard.partials.sesion-flash-status')
 
 
             @if(session('status'))
@@ -288,7 +290,7 @@
             @endif
             
             <div class="user-box">
-                <input type="text" name="title">
+                <input type="text" name="title" value="{{old('title')}}">
                 <label for="">Título</label>
                 @error('title')
                     <div style="color:red; margin-bottom:30px;">    
@@ -298,7 +300,7 @@
             </div>
             
             <div class="user-box">
-                <input type="text" name="slug">    
+                <input type="text" name="slug" value="{{old('slug')}}">    
                 <label for="">Url corta</label>
                 @error('slug')
                     <div style="color:red; margin-bottom:30px;">    
