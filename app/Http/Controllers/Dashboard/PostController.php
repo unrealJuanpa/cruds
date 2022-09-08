@@ -51,7 +51,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        echo("hola soy yo");
+        echo view ('dashboard.post.show', ["post" => $post]);
     }
 
     /**

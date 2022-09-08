@@ -290,10 +290,9 @@
     </style>
 </head>
 <body>
-    @include('dashboard.partials.nav-header-main')
 
     <div class="login-box">
-        <h2>Ingreso de post</h2>
+        <h2>Post</h2>
 
         @if ($errors->any())
             @foreach ($errors->all as $error)
@@ -305,8 +304,7 @@
 
 
         <form action="{{route('post.store')}}" method="post">
-            @include('dashboard.partials.sesion-flash-status')
-
+            @csrf
 
             @if(session('status'))
                 <div style="color:green; margin-bottom:30px;">
@@ -315,7 +313,7 @@
             @endif
             
             <div class="user-box">
-                <input type="text" name="title" value="{{old('title')}}">
+                <input type="text" name="title" value="{{$post->title}}">
                 <label for="">Título</label>
                 @error('title')
                     <div style="color:red; margin-bottom:30px;">    
@@ -325,7 +323,7 @@
             </div>
             
             <div class="user-box">
-                <input type="text" name="slug"  value="{{old('slug')}}">    
+                <input type="text" name="slug"  value="{{$post->slug}}">    
                 <label for="">Url corta</label>
                 @error('slug')
                     <div style="color:red; margin-bottom:30px;">    
@@ -335,9 +333,7 @@
             </div>
 
             <div class="user-box">
-                <textarea name="content">
-                    {{old('content')}}
-                </textarea>
+                <textarea name="content">{{$post->content}}</textarea>
                 <label for="">Contenido</label>                
                 @error('content')
                     <div style="color:red; margin-bottom:30px;">    
@@ -346,10 +342,9 @@
                 @enderror
             </div>
 
+            <!--
             <div class="user-box">
-                <textarea name="description" value="{{old('description')}}">
-                    {{old('description')}}
-                </textarea>
+                <textarea name="description" value="{{old('description')}}">{{$post->description}}</textarea>
                 <label for="">Descripción</label>
                 @error('description')
                     <div style="color:red; margin-bottom:30px;">    
@@ -357,6 +352,7 @@
                     </div>
                 @enderror
             </div>
+    -->
 
             <!-- php artisan migrate:refresh refresca BD
             <div class="user-box">
@@ -369,14 +365,6 @@
                 <label for="">Descripcion</label>
             </div>
         -->
-
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Enviar
-            </button>
         </form>
     </div>
 
