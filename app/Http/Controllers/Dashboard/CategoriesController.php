@@ -27,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        echo view ('dashboard.categories.create');
+        echo view ('dashboard.categories.create', ["category"=> new categories()]);
     }
 
     /**
@@ -49,9 +49,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
-        //
+        echo view('dashboard.categories.show', ["category" => $category]);
     }
 
     /**
@@ -60,9 +60,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
-        //
+        echo view ('dashboard.categories.edit', ["category" => $category]);
     }
 
     /**
@@ -72,9 +72,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(StoreCategoriesCategories $request, Categories $category)
     {
-        //
+        $category->update($request->validated());
+        return back()->with('status', 'Muchas gracias, categoria actualizada con exito!');
     }
 
     /**
@@ -83,8 +84,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
-        //
+        $category->delete();
+        return back()->with('status', 'Muchas, categoria eliminada');
     }
 }

@@ -290,18 +290,10 @@
     </style>
 </head>
 <body>
+    @include("dashboard.partials.nav-header-main")
 
     <div class="login-box">
         <h2>Post</h2>
-
-        @if ($errors->any())
-            @foreach ($errors->all as $error)
-                <div class="alert alert-danger" role="alert">
-                    {{$error}}
-                </div>
-            @endforeach
-        @endif
-
 
         <form action="{{route('post.store')}}" method="post">
             @csrf

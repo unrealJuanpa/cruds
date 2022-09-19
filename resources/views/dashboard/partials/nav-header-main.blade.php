@@ -15,9 +15,15 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href={{route('post.index')}}>Post</a></li>
             </ul>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href={{route('categories.index')}}>Categories</a></li>
+            </ul>
           </li>
        
         </ul>
+
+        <a class="dropdown-item" href={{route('categories.index')}}>Categories</a>
+
        <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link " href="#">Login<span class="sr-only"></span></a>

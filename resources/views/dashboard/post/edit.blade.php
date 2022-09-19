@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create category</title>
+    <title>Mi Primer Crud</title>
+
+    <link rel="stylesheet" href="{{asset("css/>app.css")}}">
+
+    <script src="{{asset("js/>app.js")}}"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<!--
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+ hasta aqui--> 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
 
     <style>
         html {
@@ -20,7 +32,7 @@
         padding:0;
         font-family: sans-serif;
         background: linear-gradient(#141e30, #243b55);
-        background: url("https://m.media-amazon.com/images/I/A113X4niaCL._AC_SL1500_.jpg");
+        background: url("https://www.artranked.com/images/b9/b940ec1d9f36f262934aa52f8b9b2a3c.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         }
@@ -278,68 +290,31 @@
     </style>
 </head>
 <body>
-@include('dashboard.partials.nav-header-main')
+    @include('dashboard.partials.nav-header-main')
 
     <div class="login-box">
-        <h2>Ingreso de categoria</h2>
+        <h2>Actualizacion de post</h2>
 
-        <form action="{{route('categories.store')}}" method="post">
-            @include('dashboard.partials.sesion-flash-status')
-
-
-            @if(session('status'))
-                <div style="color:green; margin-bottom:30px;">
-                    {{session('status')}}
+        @if ($errors->any())
+            @foreach ($errors->all as $error)
+                <div class="alert alert-danger" role="alert">
+                    {{$error}}
                 </div>
-            @endif
-            
-            <div class="user-box">
-                <input type="text" name="title" value="{{old('title')}}">
-                <label for="">Título</label>
-                @error('title')
-                    <div style="color:red; margin-bottom:30px;">    
-                        {{$message}}
-                    </div>
-                @enderror
-            </div>
-            
-            <div class="user-box">
-                <input type="text" name="slug" value="{{old('slug')}}">    
-                <label for="">Url corta</label>
-                @error('slug')
-                    <div style="color:red; margin-bottom:30px;">    
-                        {{$message}}
-                    </div>
-                @enderror
-            </div>
+            @endforeach
+        @endif
 
-            
 
-            <!-- php artisan migrate:refresh refresca BD
-            <div class="user-box">
-                <input name="content">
-                <label for="">Contenido</label>                
-            </div>
-
-            <div class="user-box">
-                <input name="description">    
-                <label for="">Descripcion</label>
-            </div>
-        -->
-
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Enviar
-            </button>
+        <form action="{{route('post.update', $post->id)}}" method="post">
+            @method('PUT')
+            @include('dashboard.partials._form')
         </form>
     </div>
 
+    <!--
     <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
     <script src="/docs/5.2/assets/js/docs.min.js"></script>
+    -->
 </body>
 </html>

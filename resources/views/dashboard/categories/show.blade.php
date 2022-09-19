@@ -281,7 +281,7 @@
 @include('dashboard.partials.nav-header-main')
 
     <div class="login-box">
-        <h2>Ingreso de categoria</h2>
+        <h2>Ver categoria</h2>
 
         <form action="{{route('categories.store')}}" method="post">
             @include('dashboard.partials.sesion-flash-status')
@@ -294,7 +294,7 @@
             @endif
             
             <div class="user-box">
-                <input type="text" name="title" value="{{old('title')}}">
+                <input type="text" name="title" value="{{$category->title}}">
                 <label for="">Título</label>
                 @error('title')
                     <div style="color:red; margin-bottom:30px;">    
@@ -304,7 +304,7 @@
             </div>
             
             <div class="user-box">
-                <input type="text" name="slug" value="{{old('slug')}}">    
+                <input type="text" name="slug" value="{{$category->slug}}">    
                 <label for="">Url corta</label>
                 @error('slug')
                     <div style="color:red; margin-bottom:30px;">    
@@ -312,20 +312,6 @@
                     </div>
                 @enderror
             </div>
-
-            
-
-            <!-- php artisan migrate:refresh refresca BD
-            <div class="user-box">
-                <input name="content">
-                <label for="">Contenido</label>                
-            </div>
-
-            <div class="user-box">
-                <input name="description">    
-                <label for="">Descripcion</label>
-            </div>
-        -->
 
             <button type="submit">
                 <span></span>

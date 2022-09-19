@@ -281,11 +281,11 @@
 @include('dashboard.partials.nav-header-main')
 
     <div class="login-box">
-        <h2>Ingreso de categoria</h2>
+        <h2>Update de categoria</h2>
 
-        <form action="{{route('categories.store')}}" method="post">
+        <form action="{{route('categories.update', $category->id)}}" method="post">
+            @method('PUT')
             @include('dashboard.partials.sesion-flash-status')
-
 
             @if(session('status'))
                 <div style="color:green; margin-bottom:30px;">
@@ -294,7 +294,7 @@
             @endif
             
             <div class="user-box">
-                <input type="text" name="title" value="{{old('title')}}">
+                <input type="text" name="title" value="{{old('title', $category->title)}}">
                 <label for="">Título</label>
                 @error('title')
                     <div style="color:red; margin-bottom:30px;">    
@@ -304,7 +304,7 @@
             </div>
             
             <div class="user-box">
-                <input type="text" name="slug" value="{{old('slug')}}">    
+                <input type="text" name="slug" value="{{old('slug', $category->slug)}}">    
                 <label for="">Url corta</label>
                 @error('slug')
                     <div style="color:red; margin-bottom:30px;">    
@@ -312,20 +312,6 @@
                     </div>
                 @enderror
             </div>
-
-            
-
-            <!-- php artisan migrate:refresh refresca BD
-            <div class="user-box">
-                <input name="content">
-                <label for="">Contenido</label>                
-            </div>
-
-            <div class="user-box">
-                <input name="description">    
-                <label for="">Descripcion</label>
-            </div>
-        -->
 
             <button type="submit">
                 <span></span>
@@ -337,9 +323,5 @@
         </form>
     </div>
 
-    <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
-    <script src="/docs/5.2/assets/js/docs.min.js"></script>
 </body>
 </html>
